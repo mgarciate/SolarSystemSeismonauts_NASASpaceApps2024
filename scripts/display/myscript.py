@@ -17,7 +17,7 @@ cat_file = cat_directory + 'apollo12_catalog_GradeA_final.csv'
 cat = pd.read_csv(cat_file)
 cat
 
-row = cat.iloc[6]
+row = cat.iloc[4]
 arrival_time = datetime.strptime(row['time_abs(%Y-%m-%dT%H:%M:%S.%f)'],'%Y-%m-%dT%H:%M:%S.%f')
 arrival_time
 
@@ -48,7 +48,16 @@ csv_times = np.array(data_cat['time_rel(sec)'].tolist())
 csv_data = np.array(data_cat['velocity(m/s)'].tolist())
 
 # Filter from time_rel(sec) from 72000 to 76000
-time_range_indices = (csv_times >= 72000) & (csv_times <= 76000)
+# file 009
+# time_range_indices = (csv_times >= 72000) & (csv_times <= 76000)
+# csv_times = csv_times[time_range_indices]
+# csv_data = csv_data[time_range_indices]
+# file 008
+# time_range_indices = (csv_times >= 68000) & (csv_times <= 71000)
+# csv_times = csv_times[time_range_indices]
+# csv_data = csv_data[time_range_indices]
+# file 007
+time_range_indices = (csv_times >= 52000) & (csv_times <= 57000)
 csv_times = csv_times[time_range_indices]
 csv_data = csv_data[time_range_indices]
 
@@ -167,7 +176,6 @@ melody_array = median_values_assigned
 notes_frequencies = {k: notes_frequencies[k] for k in list(notes_frequencies)[:notes_max]}
 # take the first notes_max values from notes_frequencies and save them in a new array
 notes_frequencies_keys = list(notes_frequencies.keys())
-print(notes_frequencies_keys)
 
 sample_rate = 44100  # Sampling rate in Hz (CD quality)
 duration = 0.5  # Duration of each note in seconds
@@ -191,9 +199,7 @@ for note in melody_array:
     fade_in = np.linspace(0, 1, fade_in_len)
     fade_out = np.linspace(1, 0, fade_out_len)
     
-    # Apply fade-in
     note_signal[:fade_in_len] *= fade_in
-    # Apply fade-out
     note_signal[-fade_out_len:] *= fade_out
 
     # Append the note's signal to the melody
@@ -212,7 +218,7 @@ print(f'Melody saved as : {wav_file}')
 plot_directory = './plots/'
 plot_file = f'{plot_directory}{test_filename}.png'
 plt.savefig(plot_file)
-# plt.show()
+plt.show()
 
 
 #13319.829 file 00026
