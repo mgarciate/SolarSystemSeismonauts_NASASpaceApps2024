@@ -1,14 +1,22 @@
 # 13319.829 file 00026
 # Musical frequencies from 130.81 to 4186.01 Hz
 
+# json
 import json
+# data
 import numpy as np
 import pandas as pd
 from obspy import read
 from datetime import datetime, timedelta
+# plotting
 import matplotlib.pyplot as plt
-import os
+# audio
 from scipy.io.wavfile import write
+# video
+from celluloid import Camera
+import seaborn as sns
+import subprocess
+from matplotlib.animation import PillowWriter
 
 # Load the notes_frequencies from the JSON file
 def load_notes_frequencies(json_file):
@@ -56,8 +64,8 @@ def process_data(data_cat, time_range, num_parts):
     
     return csv_times, csv_data, time_intervals, max_value, min_value
 
-# Calculate mean and median values for each interval and assign values between 0 and value_range
-def calculate_mean_median_values(csv_times, csv_data, time_intervals, num_parts, value_range):
+# Calculate mean and median values for each interval
+def calculate_mean_median_values(csv_times, csv_data, time_intervals, num_parts):
     # Initialize lists to store mean and median values for each interval
     mean_values = []
     median_values = []
@@ -74,6 +82,13 @@ def calculate_mean_median_values(csv_times, csv_data, time_intervals, num_parts,
             mean_values.append(mean_value)
             median_values.append(median_value)
 
+    print(f"Mean values: {mean_values}")
+    print(f"Median values: {median_values}")
+    
+    return mean_values, median_values
+
+# Calculate the mean and median values for each interval and assign values between 1 and value_range
+def calculate_mean_median_values_assigned(mean_values, median_values, value_range):
     # Calculate min and max for mean and median values
     min_mean_value = min(mean_values)
     max_mean_value = max(mean_values)
@@ -147,6 +162,75 @@ def generate_melody(melody_array, sample_rate, duration, fade_duration, notes_fr
     write(wav_file, sample_rate, melody_signal)
     print(f"Melody saved as: {wav_file}")
 
+    return wav_file
+
+# Generate MP4 video from the data
+def generate_mp4(wav_file, csv_times, csv_data, num_parts):
+    time_intervals = np.linspace(min(csv_times), max(csv_times), num_parts + 1)
+    mean_values = []
+    median_values = []
+    
+    for i in range(num_parts):
+        # Filter the data for the current interval
+        part_indices = (csv_times >= time_intervals[i]) & (csv_times < time_intervals[i + 1])
+        part_data = csv_data[part_indices]
+        
+        if len(part_data) > 0:
+            mean_value = np.mean(part_data)
+            median_value = np.median(part_data)
+
+            mean_values.append(mean_value)
+            median_values.append(median_value)
+    
+    fig, ax = plt.subplots(figsize=(9, 6))  # Create the plot figure
+    camera = Camera(fig)  # Initialize camera for animation
+
+    # Loop to animate step-by-step
+    for j in range(1, len(mean_values) + 1):  # Loop through all data points
+        plt.ylim(0, max(np.max(mean_values), np.max(median_values)))  # Set y-axis limits based on the provided data
+        plt.xlim(0, len(mean_values))  # Set x-axis limits to fit the data points
+        
+        # Plot the partial A and B data up to the current step j
+        sns.lineplot(x=range(j), y=mean_values[:j], color='red', label='A values')
+        sns.lineplot(x=range(j), y=median_values[:j], color='blue', label='B values')
+        
+        # Add a legend showing the real mean of A and B
+        plt.legend((
+            'Real Mean: {:.2e}'.format(sum(mean_values[:j]) / j),
+            'Real Median: {:.2e}'.format(sum(median_values[:j]) / j)
+        ))
+        
+        # Add a dynamic title showing the current step
+        ax.text(0.5, 1.01, f"Second = {j}", transform=ax.transAxes)
+        
+        camera.snap()  # Take a snapshot for the animation
+
+    # Create the animation from the snapshots
+    anim = camera.animate()
+
+    # Save the animation as an MP4 file
+    mp4_file = 'animated_plot.mp4'
+    anim.save(mp4_file, writer='ffmpeg', fps=30)
+    print(f"MP4 saved as: {mp4_file}")
+
+    # Optionally, save it as a GIF (uncomment below line)
+    gif_file = 'animated_plot.gif'
+    anim.save(gif_file, writer=PillowWriter(fps=30))
+    print(f"GIF saved as: {gif_file}")
+
+    output_file = 'output_with_sound.mp4'
+    subprocess.run([
+        'ffmpeg', 
+        '-i', 'animated_plot.mp4',  # Input video file
+        '-i', f'{wav_file}',  # Input audio file
+        '-c:v', 'copy',  # Copy the video codec (no re-encoding)
+        '-c:a', 'aac',  # Use AAC codec for audio
+        '-strict', 'experimental',  # Allow experimental aac
+        output_file,  # Output video file with sound
+        '-y' # Overwrite output file if it exists
+    ])
+    print(f"MP4 with sound saved as: {output_file}")
+
 # Main function to call the above tasks
 def main():
     # Parameters
@@ -155,7 +239,7 @@ def main():
     data_directory = './data/lunar/training/data/S12_GradeA/'
     row_index = 6
     time_range = (72000, 76000)
-    # Filter from time_rel(sec) from 72000 to 76000
+# Filter from time_rel(sec) from 72000 to 76000
 # file 009
 # time_range_indices = (csv_times >= 72000) & (csv_times <= 76000)
 # csv_times = csv_times[time_range_indices]
@@ -170,7 +254,13 @@ def main():
 # csv_data = csv_data[time_range_indices]
 
     num_parts = 20
-    value_range = 8
+    value_range = 20
+    # Define the number of points to display in video
+    n_points = 300
+    # Generate melody
+    sample_rate = 44100  # CD quality
+    duration = 0.5  # 0.5 seconds per note
+    fade_duration = 0.01  # Fade in/out duration (10 ms)
 
     # Load data
     data_cat, test_filename, arrival_time, arrival_time_rel = load_catalog_and_data(
@@ -182,8 +272,10 @@ def main():
     print(f"Max value: {max_value}")
     print(f"Min value: {min_value}")
 
+    # Calculate mean and median values
+    mean_values, median_values = calculate_mean_median_values(csv_times, csv_data, time_intervals, num_parts)
     # Calculate mean and median values and assign values between 1 and value_range
-    mean_values_assigned, median_values_assigned = calculate_mean_median_values(csv_times, csv_data, time_intervals, num_parts, value_range)
+    mean_values_assigned, median_values_assigned = calculate_mean_median_values_assigned(mean_values, median_values, value_range)
     print(f"Mean assigned value: {mean_values_assigned}")
     print(f"Median assigned value: {median_values_assigned}")
 
@@ -196,15 +288,12 @@ def main():
     
     melody_array = mean_values_assigned
     
-    # Generate melody
-    sample_rate = 44100  # CD quality
-    duration = 0.5  # 0.5 seconds per note
-    fade_duration = 0.01  # Fade in/out duration (10 ms)
-    
-    generate_melody(melody_array, sample_rate, duration, fade_duration, notes_frequencies_trimmed, notes_frequencies_keys, test_filename)
+    wav_file = generate_melody(melody_array, sample_rate, duration, fade_duration, notes_frequencies_trimmed, notes_frequencies_keys, test_filename)
     
     # Plot data
     plot_data(csv_times, csv_data, time_intervals, arrival_time_rel, test_filename)
+
+    generate_mp4(wav_file, csv_times, csv_data, n_points)
 
 # Run the main function
 if __name__ == "__main__":
