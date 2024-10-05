@@ -42,9 +42,19 @@ csv_data = np.array(data_cat['velocity(m/s)'].tolist())
 # Filter from arrival_time_rel to 60 seconds onwards
 # csv_times = csv_times[(csv_times >= arrival_time_rel) & (csv_times <= arrival_time_rel + 60)]
 
-# Filter from time_rel(sec) from 70000 to 80000
-csv_times = csv_times[(csv_times >= 72000)]
-csv_data = csv_data[len(csv_data)-len(csv_times):]
+# Filter from time_rel(sec) from 72000 to 76000
+time_range_indices = (csv_times >= 72000) & (csv_times <= 76000)
+csv_times = csv_times[time_range_indices]
+csv_data = csv_data[time_range_indices]
+
+# Remove all values where velocity(m/s) is negative
+positive_indices = csv_data > 0
+csv_times = csv_times[positive_indices]
+csv_data = csv_data[positive_indices]
+
+# print max and min values in csv_data
+print(f'Max: {max(csv_data)}')
+print(f'Min: {min(csv_data)}')
 
 # Plot the trace!
 fig,ax = plt.subplots(1,1,figsize=(10,3))
