@@ -1,7 +1,7 @@
 # Solar System Seismonauts 🌔🌌 - NASA Space Apps 2024
 Welcome to the **Solar System Seismonauts** repository, a project developed for the **NASA Space Apps Challenge 2024**.
 
-<img src="./resources/images/team.webp?raw=true" alt="team image" width="480"/>
+<img src="./resources/images/team.webp?raw=true" alt="team image" width="480" style="display: block; margin: 0 auto"/>
 
 ## Challenge
 
