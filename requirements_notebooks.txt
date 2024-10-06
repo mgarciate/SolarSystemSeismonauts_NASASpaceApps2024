@@ -1,0 +1,8 @@
+Python 3.10.12
+obspy 1.4.1
+numpy 1.26.4
+pandas 2.2.2
+matplotlib 3.7.1
+sklearn 1.5.2
+tqdm 4.66.5
+scipy 1.13.1
