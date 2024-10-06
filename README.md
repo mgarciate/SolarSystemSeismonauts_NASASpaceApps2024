@@ -75,9 +75,7 @@ cd SolarSystemSeismonauts_NASASpaceApps2024/scripts/display
 
 ### How to generate multimedia
 Install additional libraries
-```bash
-pip install -r requirements.txt
-```
+
 Run the ```main``` script
 ```bash
 python3 main.py
@@ -98,7 +96,9 @@ Check wav files at [audios](./outputs/audios)
 
 - videos
 
-Check mp4 files at [videos](./outputs/videos)
+Check more mp4 files at [videos](./outputs/videos)
+
+[![video with sound](https://img.youtube.com/vi/gqtvbya08OU/0.jpg)](https://www.youtube.com/watch?v=gqtvbya08OU)
 
 - melodies
 ```
