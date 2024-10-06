@@ -98,6 +98,9 @@ Run the ```main``` script
 ```bash
 python3 main.py
 ```
+The algorithm transforms m/s into piano note frequencies:
+
+<img src="./resources/images/piano.png?raw=true" alt="team image" width="480" style="display: block; margin: 0 auto"/>
 
 ### Multimedia output
 Navigate to [outputs](./outputs):
@@ -129,11 +132,12 @@ C3,G3,E4,B4,E5,G5,F5,F5,A5,G5,G5,C5,D5,B4,B4,B4,F4,F4,E4,D4,D4,C4,B3,A3,B3,A3,A3
 - Google Codelabs
 - ffmpeg
 
-## Screenshots
-![piano frequencies](./resources/images/piano.png?raw=true)
-
 ## References
+https://www.spaceappschallenge.org/nasa-space-apps-2024/challenges/seismic-detection-across-the-solar-system/
 
+https://medium.com/@pw33392/discover-unusual-patterns-in-time-series-data-with-unsupervised-anomaly-detection-and-isolation-78db408caaed
+
+[Demo Notebook provided in the challenge](https://wufs.wustl.edu/SpaceApps/data/space_apps_2024_seismic_detection.zip)
 
 ## License
 This project is licensed under the terms of the MIT license.
