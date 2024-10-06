@@ -55,14 +55,13 @@ To run this project locally, make sure you have the following requirements insta
 - [Python 3.10.12](https://www.python.org/downloads/) for Algorithm Development.
 - [ffmpeg](https://ffmpeg.org)
 - Necessary libraries for Algorithm Development part (can be installed using `pip`):
-  ```bash
+  ```python
 pip install obspy==1.4.1 numpy==1.26.4 pandas==2.2.2 matplotlib==3.7.1 scikit-learn==1.5.2 tqdm==4.66.5 scipy==1.13.1
 
 ## How to Use
 Clone this repository:
 ```bash
 git clone https://github.com/mgarciate/SolarSystemSeismonauts_NASASpaceApps2024.git
-```
 
 Open the notebook at:
 ```bash
