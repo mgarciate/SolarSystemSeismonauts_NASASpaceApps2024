@@ -236,7 +236,7 @@ def main():
     off_times = df['Off Time'].tolist()
     for i in range(len(filenames)):
         print(f"{i}: {filenames[i]} - {on_times[i]} - {off_times[i]}")
-        time_range = (on_times[i]-200, off_times[i]+200)
+        time_range = (on_times[i]-200, off_times[i]+1000)
         test_filename = filenames[i]
 
         # Load data
