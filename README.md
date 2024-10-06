@@ -17,7 +17,7 @@ We used a two-phase ensemble model. First, we applied the STA/LTA algorithm, a s
 
 In the (majority) case where the algorithm generated multiple candidate windows for a seism, the predicted window was selected as the one with the highest density of anomalies detected by the Isolation Forest algorithm.
 
-This approach resulted in remarkable outcomes on a training set of 50 files, with a mean absolute error of less than five minutes (which corresponds to about 3% total of a day time) in 40 out of the 50 files.
+This approach resulted in remarkable outcomes on a training set of 50 files, with a mean absolute error of less than 180 seconds in almost 40 out of the 50 files.
 
 Sonification is the representation of data sets through sound to facilitate their communication and interpretation. We implemented this concept in the challenge because, not only does it provide a solution to the problem, but it also brings this type of project closer to the public by allowing them to appreciate the data through both music and visualizations, as we have done. This makes the data more accessible.
 
