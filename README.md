@@ -92,7 +92,7 @@ Navigate to [outputs](./outputs):
 
 <audio controls>
   <source src="./outputs/audios/xa.s12.00.mhz.1975-06-26HR00_evid00198.wav?raw=true" type="audio/wav">
-  Download the file from <a href="./outputs/audios/xa.s12.00.mhz.1975-06-26HR00_evid00198.wav?raw=true">xa.s12.00.mhz.1975-06-26HR00_evid00198.wav</a>
+  Download the file from <a href="https://github.com/mgarciate/SolarSystemSeismonauts_NASASpaceApps2024/tree/master/outputs/audios/xa.s12.00.mhz.1975-06-26HR00_evid00198.wav?raw=true">xa.s12.00.mhz.1975-06-26HR00_evid00198.wav</a>
 </audio>
 
 - gifs
