@@ -43,8 +43,6 @@ With the data received from the final algorithm, we filter the time range where 
 - **outputs**: Results from the applied algorithms, including multimedia representations, organized into different subfolders (videos, gifs, audios, ...).
 - **scripts/display**: Script for generating multimedia content based on the algorithm’s output.
 
-
-
 ## Installation Requirements 📦
 To run this project locally, make sure you have the following requirements installed:
 
@@ -69,8 +67,14 @@ cd SolarSystemSeismonauts_NASASpaceApps2024/scripts/display
 ```
 
 ### How to generate multimedia
-
-
+Install additional libraries
+```bash
+pip install -r requirements.txt
+```
+Run the ```main``` script
+```bash
+python3 main.py
+```
 
 ## Screenshots
 ![piano frequencies](./resources/images/piano.png?raw=true)
