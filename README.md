@@ -28,7 +28,7 @@ With the data received from the final algorithm, we filter the time range where 
 2. We assign a frequency to the velocity (m/s) in each fragment.
 3. We merge all the frequencies into a ```.wav``` file.
 4. We create an animated graph using data from the CSV file (average and median samples).
-5. We add the audio track from step 4 to the video file from step 5.
+5. We add the audio track from step 3 to the video file from step 4.
 
 ### Key Features
 
@@ -92,7 +92,7 @@ Navigate to [outputs](./outputs):
 
 <audio controls>
   <source src="./outputs/audios/xa.s12.00.mhz.1975-06-26HR00_evid00198.wav?raw=true" type="audio/wav">
-  Your browser does not support the audio element.
+  Download the file from <a href="./outputs/audios/xa.s12.00.mhz.1975-06-26HR00_evid00198.wav?raw=true">xa.s12.00.mhz.1975-06-26HR00_evid00198.wav</a>
 </audio>
 
 - gifs
