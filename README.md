@@ -24,16 +24,23 @@ We merge all the frequencies into a ```.wav``` file.
 We create an animated graph using data from the CSV file (average and median samples).
 We add the audio track from step 4 to the video file from step 5.
 
-### Key Features:
-- **Seismic data analysis**: We integrate data from public sources, such as NASA missions, to study seismic patterns.
-- **Geophysical simulations**: We use simulation tools to model seismic activity in the universe.
-- **Interactive visualization**: A multimedia interface allows users to visualize and explore these phenomena.
+### Key Features
 
-## Repo structure
-```
-notebooks - asdfdasf
-asdfasdf - asdf
-```
+1. **Seismic wave analysis**: Probing the structure and composition of Earth and other planets.
+2. **Energy challenge in space**: Addressing the issue of high energy consumption for long-distance data transmission in space.
+3. **Two-phase ensemble model**: Combining the STA/LTA algorithm for seismic detection with an optimized grid of hyperparameters.
+4. **Isolation Forest filtering**: Selecting the most accurate prediction window based on anomaly density detected by the Isolation Forest algorithm.
+5. **High accuracy results**: Achieving a 3% mean absolute error in 40 out of 50 training files with less than five minutes error.
+6. **Sonification**: Converting data into sound for easier interpretation and communication, making seismic data more accessible to the public.
+7. **Data visualization**: Creating an animated graph and merging the audio with video to visualize and present the data effectively.
+
+## Repo Structure
+
+- **notebooks**: Jupyter Notebook files containing the algorithms used in the project.
+- **outputs**: Results from the applied algorithms, including multimedia representations, organized into different subfolders.
+- **scripts/display**: Script for generating multimedia content based on the algorithm’s output.
+
+
 
 ## Installation Requirements 📦
 To run this project locally, make sure you have the following requirements installed:
