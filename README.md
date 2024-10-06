@@ -217,6 +217,10 @@ https://medium.com/@pw33392/discover-unusual-patterns-in-time-series-data-with-u
 
 [Demo Notebook provided in the challenge](https://wufs.wustl.edu/SpaceApps/data/space_apps_2024_seismic_detection.zip)
 
+[Presentation PPTX](./resources/presentation/presentation.pptx)
+
+[Presentation PDF](./resources/presentation/presentation.pdf)
+
 ## License
 This project is licensed under the terms of the MIT license.
 
