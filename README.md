@@ -34,24 +34,30 @@ With the data received from the final algorithm, we filter the time range where 
 
 1. **Seismic wave analysis**: Probing the structure and composition of Earth and other planets.
 2. **Energy challenge in space**: Addressing the issue of high energy consumption for long-distance data transmission in space.
-3. **Two-phase ensemble model**: Combining the STA/LTA algorithm for seismic detection with an optimized grid of hyperparameters.
-4. **Isolation Forest filtering**: Selecting the most accurate prediction window based on anomaly density detected by the Isolation Forest algorithm.
-5. **High accuracy results**: Achieving a 3% mean absolute error in 40 out of 50 training files with less than five minutes error.
-6. **Sonification**: Converting data into sound for easier interpretation and communication, making seismic data more accessible to the public.
-7. **Data visualization**: Creating an animated graph and merging the audio with video to visualize and present the data effectively.
+3. **Two-phase ensemble model**: Combining the STA/LTA algorithm for seismic detection with an Isolation Forest for anomaly detection.
+4. **High accuracy results**: Achieving a 3% mean absolute error in 40 out of 50 training files with less than five minutes error.
+5. **Sonification**: Converting data into sound for easier interpretation and communication, making seismic data more accessible to the public.
+6. **Data visualization**: Creating an animated graph and merging the audio with video to visualize and present the data effectively.
 
 ## Repo Structure
 
-- **notebooks**: Jupyter Notebook files containing the algorithms used in the project.
-- **outputs**: Results from the applied algorithms, including multimedia representations, organized into different subfolders (videos, gifs, audios, ...).
-- **scripts/display**: Script for generating multimedia content based on the algorithm’s output.
+- **notebooks**: Jupyter Notebook files containing the algorithms used in the project. [Here](https://github.com/mgarciate/SolarSystemSeismonauts_NASASpaceApps2024/blob/be3881612db2a215c3e99800a150b016146d7618/notebooks/SEISMIC_DETECTION_FINAL_VERSION.ipynb) is the final version of the notebook.
+
+- **outputs**: Results from the applied algorithms, including multimedia representations organized into different subfolders (videos, GIFs, audios, etc.).
+  - The submitted predictions file is `predictions.csv` (also available in Excel format with the same data).
+
+- **scripts/display**: Script to generate multimedia content based on the algorithm's output.
+
 
 ## Installation Requirements 📦
 To run this project locally, make sure you have the following requirements installed:
 
-- [Python 3.x](https://www.python.org/downloads/)
+- [Python 3.10.12](https://www.python.org/downloads/) for Algorithm Development.
 - [ffmpeg](https://ffmpeg.org)
-- Necessary libraries (can be installed using `pip`):
+- Necessary libraries for Algorithm Development part (can be installed using `pip`):
+  ```bash
+pip install obspy==1.4.1 numpy==1.26.4 pandas==2.2.2 matplotlib==3.7.1 scikit-learn==1.5.2 tqdm==4.66.5 scipy==1.13.1
+```
 
 ## How to Use
 Clone this repository:
