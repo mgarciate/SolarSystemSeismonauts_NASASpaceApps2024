@@ -127,6 +127,7 @@ def plot_data(csv_times, csv_data, time_intervals, test_filename):
 # Generate audio melody based on assigned notes
 def generate_melody(melody_array, sample_rate, duration, fade_duration, notes_frequencies, notes_frequencies_keys, test_filename):
     melody_signal = np.array([])
+    melody_notes = np.array([])
     print(f"Melody array: {melody_array}")
     for note in melody_array:
         frequency = notes_frequencies[notes_frequencies_keys[note]]
@@ -142,7 +143,10 @@ def generate_melody(melody_array, sample_rate, duration, fade_duration, notes_fr
         note_signal[-fade_out_len:] *= fade_out
 
         melody_signal = np.concatenate((melody_signal, note_signal))
+        melody_notes = np.append(melody_notes, notes_frequencies_keys[note])
     
+    melody_file = f'../../outputs/melodies/{test_filename}.txt'
+    np.savetxt(melody_file, melody_notes, fmt='%s', delimiter=',')
     melody_signal = np.int16(melody_signal * 32767)
     wav_file = f'../../outputs/audios/{test_filename}.wav'
     write(wav_file, sample_rate, melody_signal)
