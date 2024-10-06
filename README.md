@@ -73,6 +73,24 @@ Or generate multimedia at:
 cd SolarSystemSeismonauts_NASASpaceApps2024/scripts/display
 ```
 
+### Steps followed with the visual aid of graphs:
+
+1. Obtaining windows via STA/LTA
+
+![detect windows](algorithm_step1.png)
+
+2. Obtaining anomaly coefficients using isolation forest
+
+![isolation forest](algorithm_step2.png)
+
+3. Combining the signal and the anomalies detected in the isolation forest
+
+![combining anomalies](algorithm_step3.png)
+
+4. Obtaining the predicted window
+
+![result window](algorithm_step4.png)
+
 ### How to generate multimedia
 Install additional libraries
 
