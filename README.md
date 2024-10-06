@@ -12,7 +12,7 @@ By studying seismic waves and how fast they travel, we can probe the structure a
 
 We used a two-phase ensemble model. First, we applied the STA/LTA algorithm, a state-of-the-art method for seismic detection. We optimized a grid of hyperparameters (windows and triggers) to minimize the mean absolute error (real relative time - predicted relative time) over a training set of 10 files, which outputs different candidate windows for seismic events.
 
-In the (majority) case where the algorithm generated multiple candidate windows for an earthquake, the predicted window was selected as the one with the highest density of anomalies detected by the Isolation Forest algorithm.
+In the (majority) case where the algorithm generated multiple candidate windows for a seism, the predicted window was selected as the one with the highest density of anomalies detected by the Isolation Forest algorithm.
 
 This approach resulted in remarkable outcomes on a training set of 50 files, with a mean absolute error of less than five minutes (which corresponds to about 3%) in 40 out of the 50 files.
 
