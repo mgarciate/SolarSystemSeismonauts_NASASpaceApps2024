@@ -16,13 +16,16 @@ In the (majority) case where the algorithm generated multiple candidate windows 
 
 This approach resulted in remarkable outcomes on a training set of 50 files, with a mean absolute error of less than five minutes (which corresponds to about 3%) in 40 out of the 50 files.
 
-Sonification is the representation of data sets through sound to facilitate their communication and interpretation. We implemented this concept in the challenge because, not only does it provide a solution to the problem, but it also brings this type of project closer to the public by allowing them to appreciate the data through both music and visualizations, as we have done. This makes the data more accessible. Additionally, sonification is already used in science to assist blind scientists, among other applications. Here's how we implemented it:
+Sonification is the representation of data sets through sound to facilitate their communication and interpretation. We implemented this concept in the challenge because, not only does it provide a solution to the problem, but it also brings this type of project closer to the public by allowing them to appreciate the data through both music and visualizations, as we have done. This makes the data more accessible.
+
+Additionally, sonification is already used in science to assist blind scientists, among other applications. Here's how we implemented it:
 With the data received from the final algorithm, we filter the time range where the seismic event occurs.
-We fragment the signal into several parts.
-We assign a frequency to the velocity (m/s) in each fragment.
-We merge all the frequencies into a ```.wav``` file.
-We create an animated graph using data from the CSV file (average and median samples).
-We add the audio track from step 4 to the video file from step 5.
+
+1. We fragment the signal into several parts.
+2. We assign a frequency to the velocity (m/s) in each fragment.
+3. We merge all the frequencies into a ```.wav``` file.
+4. We create an animated graph using data from the CSV file (average and median samples).
+5. We add the audio track from step 4 to the video file from step 5.
 
 ### Key Features
 
@@ -37,7 +40,7 @@ We add the audio track from step 4 to the video file from step 5.
 ## Repo Structure
 
 - **notebooks**: Jupyter Notebook files containing the algorithms used in the project.
-- **outputs**: Results from the applied algorithms, including multimedia representations, organized into different subfolders.
+- **outputs**: Results from the applied algorithms, including multimedia representations, organized into different subfolders (videos, gifs, audios, ...).
 - **scripts/display**: Script for generating multimedia content based on the algorithm’s output.
 
 
@@ -72,5 +75,8 @@ cd SolarSystemSeismonauts_NASASpaceApps2024/scripts/display
 ## Screenshots
 ![piano frequencies](./resources/images/piano.png?raw=true)
 
+
 ## License
 This project is licensed under the terms of the MIT license.
+
+Thank you for exploring the solar system with us! 🌍🚀
