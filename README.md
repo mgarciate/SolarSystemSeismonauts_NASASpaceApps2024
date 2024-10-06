@@ -1,5 +1,8 @@
 # Solar System Seismonauts 🌔🌌 - NASA Space Apps 2024
 Welcome to the **Solar System Seismonauts** repository, a project developed for the **NASA Space Apps Challenge 2024**.
+
+<img src="./resources/images/team.webp?raw=true" alt="team image" width="480"/>
+
 ## Challenge
 
 The challenge is to write a computer program to analyze real data from the Apollo missions and the Mars Interior Exploration using Seismic Investigations, Geodesy and Heat Transport (InSight) Lander to identify seismic events! The Example Resources section provides a data packet with continuous seismic records from these missions arranged in training and test subsets, catalogs showing when the known seismic records occur in the training data, and a Python Jupyter Notebook with helpful codes to help you get started. Your team can look at these records to understand the qualities of planetary seismic data, and then try your hand at finding all the seismic events in the test dataset. Maybe you’ll find some additional events not in the current catalogs!
@@ -76,8 +79,44 @@ Run the ```main``` script
 python3 main.py
 ```
 
+### Multimedia output
+Navigate to [outputs](./outputs):
+- plots
+
+![plot chart](./outputs/plots/xa.s12.00.mhz.1975-06-26HR00_evid00198.png?raw=true)
+- audio files
+
+<audio controls>
+  <source src="./outputs/audios/xa.s12.00.mhz.1975-06-26HR00_evid00198.wav?raw=true" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
+
+- gifs
+
+![plot chart](./outputs/gifs/xa.s12.00.mhz.1975-06-26HR00_evid00198.gif?raw=true)
+
+- videos
+
+<video controls>
+  <source src="./outputs/videos/xa.s12.00.mhz.1975-06-26HR00_evid00198.mp4?raw=true" type="video/mp4">
+  Your browser does not support the audio element.
+</video>
+
+- melodies
+```
+C3,G3,E4,B4,E5,G5,F5,F5,A5,G5,G5,C5,D5,B4,B4,B4,F4,F4,E4,D4,D4,C4,B3,A3,B3,A3,A3,A3,G3,G3,A3,G3,G3,F3,F3,C3,E3,G3,G3,G3
+```
+
+## Tools
+- Python
+- Jupyter Notebook
+- Google Codelabs
+- ffmpeg
+
 ## Screenshots
 ![piano frequencies](./resources/images/piano.png?raw=true)
+
+## References
 
 
 ## License
