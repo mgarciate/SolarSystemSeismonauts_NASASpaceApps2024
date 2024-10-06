@@ -98,9 +98,80 @@ Run the ```main``` script
 ```bash
 python3 main.py
 ```
-The algorithm transforms m/s into piano note frequencies:
+1. We fragment the signal into several parts.
+
+![chart with parts](./resources/images/sonification_step1.png)
+
+2. We assign a frequency to the velocity (m/s) in each fragment.
 
 <img src="./resources/images/piano.png?raw=true" alt="team image" width="480" style="display: block; margin: 0 auto"/>
+
+3. We merge all the frequencies into a ```.wav``` file.
+```python
+    for note in melody_array: # From 0 to n notes
+        frequency = notes_frequencies[notes_frequencies_keys[note]]
+        t = np.linspace(0, duration, int(sample_rate * duration), False)
+        note_signal = 0.5 * np.sin(2 * np.pi * frequency * t)
+
+        fade_in_len = int(sample_rate * fade_duration)
+        fade_out_len = int(sample_rate * fade_duration)
+        fade_in = np.linspace(0, 1, fade_in_len)
+        fade_out = np.linspace(1, 0, fade_out_len)
+        
+        note_signal[:fade_in_len] *= fade_in
+        note_signal[-fade_out_len:] *= fade_out
+
+        melody_signal = np.concatenate((melody_signal, note_signal))
+        melody_notes = np.append(melody_notes, notes_frequencies_keys[note])
+    
+    melody_file = f'../../outputs/melodies/{test_filename}.txt'
+    np.savetxt(melody_file, melody_notes, fmt='%s', delimiter=',')
+```
+4. We create an animated graph using data from the CSV file (average and median samples).
+```python
+    fig, ax = plt.subplots(figsize=(9, 6))  # Create the plot figure
+    camera = Camera(fig)  # Initialize camera for animation
+    # Loop to animate step-by-step
+    # Loop to animate step-by-step
+    for j in range(1, len(mean_values) + 1):  # Loop through all data points
+        plt.ylim(0, max(np.max(mean_values), np.max(median_values)))  # Set y-axis limits based on the provided data
+        plt.xlim(0, len(mean_values))  # Set x-axis limits to fit the data points
+        
+        # Plot the partial A and B data up to the current step j
+        sns.lineplot(x=range(j), y=mean_values[:j], color='red', label='Mean values')
+        sns.lineplot(x=range(j), y=median_values[:j], color='blue', label='Median values')
+        
+        plt.legend((
+            'Real Mean: {:.2e}'.format(sum(mean_values[:j]) / j),
+            'Real Median: {:.2e}'.format(sum(median_values[:j]) / j),
+        ))
+        
+        # Add a dynamic title showing the current step
+        ax.text(0.5, 1.01, f"time_rel(sec) = {time_intervals[j]}", transform=ax.transAxes)
+
+        camera.snap()  # Take a snapshot for the animation
+
+    # Create the animation from the snapshots
+    anim = camera.animate()
+
+    # Save the animation as an MP4 file
+    mp4_file = f'{test_filename}.mp4'
+    anim.save(mp4_file, writer='ffmpeg', fps=30)
+```
+5. We add the audio track from step 3 to the video file from step 4.
+```python
+    output_file = f'../../outputs/videos/{test_filename}.mp4'
+    subprocess.run([
+        'ffmpeg', 
+        '-i', mp4_file,  # Input video file
+        '-i', f'{wav_file}',  # Input audio file
+        '-c:v', 'copy',  # Copy the video codec (no re-encoding)
+        '-c:a', 'aac',  # Use AAC codec for audio
+        '-strict', 'experimental',  # Allow experimental aac
+        output_file,  # Output video file with sound
+        '-y' # Overwrite output file if it exists
+    ])
+```
 
 ### Multimedia output
 Navigate to [outputs](./outputs):
