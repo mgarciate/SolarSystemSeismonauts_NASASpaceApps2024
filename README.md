@@ -90,10 +90,7 @@ Navigate to [outputs](./outputs):
 ![plot chart](./outputs/plots/xa.s12.00.mhz.1975-06-26HR00_evid00198.png?raw=true)
 - audio files
 
-<audio controls>
-  <source src="./outputs/audios/xa.s12.00.mhz.1975-06-26HR00_evid00198.wav?raw=true" type="audio/wav">
-  Download the file from <a href="https://github.com/mgarciate/SolarSystemSeismonauts_NASASpaceApps2024/tree/master/outputs/audios/xa.s12.00.mhz.1975-06-26HR00_evid00198.wav?raw=true">xa.s12.00.mhz.1975-06-26HR00_evid00198.wav</a>
-</audio>
+Check wav files at [audios](./outputs/audios)
 
 - gifs
 
@@ -101,10 +98,7 @@ Navigate to [outputs](./outputs):
 
 - videos
 
-<video controls>
-  <source src="./outputs/videos/xa.s12.00.mhz.1975-06-26HR00_evid00198.mp4?raw=true" type="video/mp4">
-  Your browser does not support the audio element.
-</video>
+Check mp4 files at [videos](./outputs/videos)
 
 - melodies
 ```
