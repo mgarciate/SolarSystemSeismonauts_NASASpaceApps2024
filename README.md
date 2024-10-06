@@ -48,7 +48,6 @@ With the data received from the final algorithm, we filter the time range where 
 
 - **scripts/display**: Script to generate multimedia content based on the algorithm's output.
 
-
 ## Installation Requirements 📦
 To run this project locally, make sure you have the following requirements installed:
 
@@ -93,11 +92,17 @@ cd SolarSystemSeismonauts_NASASpaceApps2024/scripts/display
 
 ### How to generate multimedia
 Install additional libraries
+```bash
+pip install -r requirements_sonification.txt
+```
 
 Run the ```main``` script
 ```bash
 python3 main.py
 ```
+
+We have automatically generated multimedia content for 50 seismic events detected and analyzed by the algorithm described above, using the following approach:
+
 1. We fragment the signal into several parts.
 
 ![chart with parts](./resources/images/sonification_step1.png)
@@ -174,7 +179,9 @@ python3 main.py
 ```
 
 ### Multimedia output
+
 Navigate to [outputs](./outputs):
+
 - plots
 
 ![plot chart](./outputs/plots/xa.s12.00.mhz.1975-06-26HR00_evid00198.png?raw=true)

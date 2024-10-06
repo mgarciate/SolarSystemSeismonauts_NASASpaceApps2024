@@ -1,0 +1,7 @@
+numpy
+pandas
+obspy
+matplotlib
+scipy
+celluloid
+seaborn
