@@ -35,7 +35,7 @@ With the data received from the final algorithm, we filter the time range where 
 1. **Seismic wave analysis**: Probing the structure and composition of Earth and other planets.
 2. **Energy challenge in space**: Addressing the issue of high energy consumption for long-distance data transmission in space.
 3. **Two-phase ensemble model**: Combining the STA/LTA algorithm for seismic detection with an Isolation Forest for anomaly detection.
-4. **High accuracy results**: Achieving a mean absolute error of less than 180 seconds in almost 40 out of the 50 files.
+4. **High accuracy results**: Achieving a mean absolute error of less than 180 seconds in almost 40 out of the 50 training files.
 5. **Sonification**: Converting data into sound for easier interpretation and communication, making seismic data more accessible to the public.
 6. **Data visualization**: Creating an animated graph and merging the audio with video to visualize and present the data effectively.
 
